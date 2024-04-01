@@ -1,0 +1,11 @@
+<main class="w-full relative">
+    <div class="justify-center flex my-10">
+        <div class="text-3xl">WILLKOMMEN ZUHAUSE!</div>
+    </div>
+    <div class="main-screen w-screen flex items-center justify-center">
+        <button mat-raised-button color="primary" [routerLink]="['/add-users']" class="mx-4">Nutzer hinzufügen</button>
+        <button mat-raised-button color="accent" [routerLink]="['/user-list']" class="mx-4">Alle Nutzer ansehen</button>
+        <button mat-raised-button (click)="logout()" [routerLink]="['/']" class="mx-4">Abmelden</button>
+    </div>
+
+</main>

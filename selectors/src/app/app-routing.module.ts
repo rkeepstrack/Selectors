@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { AddUsersComponent } from './add-users/add-users.component';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { AddUsersComponent } from './components/add-users/add-users.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
     { "path": '', component: LoginComponent },

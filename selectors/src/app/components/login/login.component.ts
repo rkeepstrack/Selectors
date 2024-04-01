@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LoginActions } from '../../states/actions';
+import { LoginActions } from '../../../states/actions';
 import { Observable } from 'rxjs';
-import { AppState, UserState } from '../../states/states';
-import { isLoggedInSelector } from '../../states/selectors';
+import { AppState, UserState } from '../../../states/states';
+import { isLoggedInSelector } from '../../../states/selectors';
 import { Router } from '@angular/router';
 
 @Component({
