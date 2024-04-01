@@ -1,12 +1,14 @@
-<div class="flex my-4">
-  <mat-slide-toggle>Toggle me!</mat-slide-toggle>
-</div>
+<!-- <div class="flex my-4">
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+</div> -->
 
-<div class="example-button-row">
-  <button mat-raised-button>Basic</button>
-  <button mat-raised-button color="primary">Primary</button>
-  <button mat-raised-button color="accent">Accent</button>
-  <button mat-raised-button color="warn">Warn</button>
-  <button mat-raised-button disabled>Disabled</button>
-  <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+<div class="wrapper">
+    <div class="justify-center flex flex-col content-center items-center">
+        <div class="text-3xl my-5 text-center">Log In or Log Out</div>
+        <div class="text-xl my-5 text-center"></div> Current Login Status: {{isLoggedIn$ | async }}
+        <div class="example-button-row">
+            <button mat-raised-button (click)="login()" color="primary">Login</button>
+            <button mat-raised-button (click)="logout()" >Log Out</button>
+        </div>
+    </div>
 </div>

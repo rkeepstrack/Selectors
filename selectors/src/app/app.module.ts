@@ -6,6 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { StoreModule } from '@ngrx/store';
+import { loginReducer } from '../states/reducer';
+import { LoginActions } from '../states/actions';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     BrowserModule,
     AppRoutingModule,
     MatSlideToggleModule,
-    MatButtonModule
+    MatButtonModule,
+    StoreModule.forRoot({user: loginReducer})
   ],
   providers: [
     provideAnimationsAsync()
