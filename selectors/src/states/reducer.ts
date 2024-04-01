@@ -1,10 +1,20 @@
-import { LoginActions } from "./actions";
+import { LoginActions, AdminActions } from "./actions";
 import { createReducer, on } from "@ngrx/store";
-import { initialState, UserState } from "./states";
+import { AppState, initialState, UserState } from "./states";
 
 export const loginReducer = createReducer(
     initialState,
-    on(LoginActions.userLogin, (state:UserState, {isLoggedIn}) => ({ ...state, isLoggedIn})),
-    on(LoginActions.userLogout, (state:UserState, {isLoggedIn}) => ({ ...state, isLoggedIn})),
+    on(LoginActions.userLogin, (state:AppState, {user}) => ({ ...state, ...user})),
+    on(LoginActions.userLogout, (state:AppState, {isLoggedIn}) => ({ ...state, isLoggedIn})),
+);
+
+const AdminReducer = createReducer(
+    initialState,
+    on(AdminActions.addUser, (state: AppState, {user}) => (
+        { ...state, users: [...state.users, user]}
+    )),
+    on(AdminActions.removeUser, (state: AppState, {id}) => (
+        { ...state, users: state.users.filter((user) => user.id !== id)}
+    )),
 );
 

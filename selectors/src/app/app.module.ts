@@ -10,7 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { loginReducer } from '../states/reducer';
 import { AddUsersComponent } from './components/add-users/add-users.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { RouterOutlet } from '@angular/router';
@@ -35,7 +35,8 @@ import { HomeComponent } from './components/home/home.component';
     CommonModule,
     MatInputModule,
     RouterOutlet,
-    StoreModule.forRoot({user: loginReducer})
+    StoreModule.forRoot({user: loginReducer}),
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync()
