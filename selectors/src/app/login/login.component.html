@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <div class="justify-center flex flex-col content-center items-center">
+        <div class="text-3xl my-5 text-center">Log In or Log Out</div>
+        <div class="text-xl my-5 text-center"></div> Current Login Status: {{isLoggedIn$ | async }}
+        <div class="example-button-row">
+            <button mat-raised-button (click)="login()" color="primary">Login</button>
+            <button mat-raised-button (click)="logout()" >Log Out</button>
+        </div>
+    </div>
+</div>
