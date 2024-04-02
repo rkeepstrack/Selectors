@@ -2,7 +2,7 @@
     <div class="justify-center flex my-10">
         <div class="text-3xl">WILLKOMMEN ZUHAUSE!</div>
     </div>
-	<div class="card-row flex items-center space-x-10 my-3">
+	<div class="card-row flex space-x-10 my-3">
 		<mat-card *ngIf="isAdmin" [routerLink]="['/add-users']" class="card hover:bg-cyan-500 hover:ease-in-out duration-75 cursor-pointer">
 			<mat-card-header>
 				<mat-card-title>User Hinzufügen</mat-card-title>
@@ -14,7 +14,7 @@
 			</mat-card-content>
 			<mat-card-footer class="bg-cyan-500 h-3 mt-5"></mat-card-footer>
 		</mat-card>
-		<mat-card [routerLink]="['/list-users']" class="card w-1/2 hover:bg-emerald-500 hover:ease-in-out duration-75 cursor-pointer">
+		<mat-card [routerLink]="['/list-users']" class="card hover:bg-emerald-500 hover:ease-in-out duration-75 cursor-pointer">
 			<mat-card-header>
 				<mat-card-title>Alle Nutzer ansehen</mat-card-title>
 			</mat-card-header>
@@ -23,9 +23,9 @@
 					Alle bisher erstellten Nutzer einsehen.	
 				</p>
 			</mat-card-content>
-			<mat-card-footer class="bg-emerald-500 h-3 mt-5"></mat-card-footer>
+			<mat-card-footer class="bg-emerald-500 h-3 bottom-0 absolute w-full"></mat-card-footer>
 		</mat-card>
-		<mat-card [routerLink]="['/']" class="card w-1/2 hover:bg-stone-300 hover:ease-in-out duration-75 cursor-pointer">
+		<mat-card [routerLink]="['/']" class="card hover:bg-stone-300 hover:ease-in-out duration-75 cursor-pointer">
 			<mat-card-header>
 				<mat-card-title>Abmelden</mat-card-title>
 			</mat-card-header>
@@ -34,7 +34,7 @@
 				Abmelden
 				</p>
 			</mat-card-content>
-			<mat-card-footer class="bg-stone-300 h-3 mt-5"></mat-card-footer>
+			<mat-card-footer class="bg-stone-300 h-3 bottom-0 absolute w-full"></mat-card-footer>
 		</mat-card>
 	</div>
 

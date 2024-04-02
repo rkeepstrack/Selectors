@@ -1,9 +1,12 @@
+// Angular
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+
+// Redux
+import { isLoggedInSelector, roleSelector } from "../../../states/selectors";
+import { LoginActions } from "../../../states/actions";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { LoginActions } from "../../../states/actions";
-import { isLoggedInSelector, roleSelector } from "../../../states/selectors";
 import { AppState } from "../../../states/states";
 
 @Component({
@@ -27,7 +30,7 @@ export class HomeComponent {
 			return isLoggedIn;
 		});
 		this.role$ = store.select(roleSelector);
-		this.isAdmin = false;
+		this.isAdmin = true;
 	}
 
 	logout() {

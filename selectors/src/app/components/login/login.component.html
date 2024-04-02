@@ -4,8 +4,6 @@
     </div>
     <div class="flex flex-col justify-center items-center w-full">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col w-2/3 mx-3">
-            <!-- DEBUG -->
-
             <mat-form-field class="my-3">
                 <mat-label>Dein Username</mat-label>
                 <input matInput formControlName="username" required>

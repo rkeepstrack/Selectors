@@ -1,25 +1,12 @@
 import { Component } from "@angular/core";
-import { errorSelector, wholeStateSelector } from "../states/selectors";
-import { AppState } from "../states/states";
-import { Observable } from "rxjs";
-import { Store } from "@ngrx/store";
 
+// Da die Appkomponente in meiner Applikation nur auf ganze Seiten routed
+// und sonst keinen weiteren Zweck erfüllt, hab ich das Template zur Übersichtlichkeit in der Datenstruktur nicht weiter ausgelagert.
 @Component({
 	selector: "app-root",
-	template: `
-		{{ wholeState$ | async | json }}
-		{{ hasError$ | async | json }}
-		<router-outlet />
-	`,
+	template: ` <router-outlet /> `,
 	styles: "",
 })
 export class AppComponent {
-	title = "selectors";
-	wholeState$: Observable<AppState>;
-	hasError$: Observable<string | null>;
-
-	constructor(private store: Store<AppState>) {
-		this.wholeState$ = store.select(wholeStateSelector);
-		this.hasError$ = store.select(errorSelector);
-	}
+	title = "Benutzerverwaltung";
 }

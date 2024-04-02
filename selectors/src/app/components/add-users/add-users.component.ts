@@ -1,6 +1,12 @@
-// Components
+// Angular
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+
+// Redux
+import { UserRole } from "../../../states/states";
+
+// Material
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
 	selector: "app-add-users",
@@ -8,9 +14,11 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 	templateUrl: "./add-users.component.html",
 	styleUrl: "./add-users.component.scss",
 })
-export class AddUsersComponent implements OnInit {
+export class AddUsersComponent {
 	addUserForm: FormGroup;
-	users: { email: string; password: string }[];
+	users: { username: string; password: string }[];
+	roles = new FormControl("");
+	roleList: UserRole[] = ["admin", "guest", "user"];
 
 	//Form State
 	loading = false;
@@ -21,23 +29,24 @@ export class AddUsersComponent implements OnInit {
 	showErrorMessage = false;
 
 	addUser() {
-		this.users.push({ email: this.addUserForm.value.email, password: this.addUserForm.value.password });
-		this.showSuccessMessage = true;
+		this.users.push({ username: this.addUserForm.value.username, password: this.addUserForm.value.password });
+		this.snackBar.open(this.addUserForm.value.username + " wurde erfolgreich hinzugefügt.", "Schließen");
 	}
 
-	constructor(private fb: FormBuilder) {
-		this.users = [{ email: "bypass@login.de", password: "bypasspassword" }];
-
+	constructor(
+		private fb: FormBuilder,
+		private snackBar: MatSnackBar
+	) {
+		this.users = [{ username: "bypass@login.de", password: "bypasspassword" }];
 		this.addUserForm = this.fb.group({
-			email: ["", [Validators.email]],
+			username: ["", [Validators.minLength(3)]],
 			password: ["", [Validators.minLength(3)]],
+			role: [""],
 		});
 	}
 
-	ngOnInit() {}
-
-	get email() {
-		return this.addUserForm.get("email");
+	get username() {
+		return this.addUserForm.get("username");
 	}
 
 	get password() {

@@ -1,26 +1,32 @@
+// Modules
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { AppRoutingModule } from "./app-routing.module";
+import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { RouterOutlet } from "@angular/router";
+
+// Material
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatButtonModule } from "@angular/material/button";
-
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
-import { StoreModule } from "@ngrx/store";
-import { reducers } from "../states/reducer";
-import { AddUsersComponent } from "./components/add-users/add-users.component";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { CommonModule } from "@angular/common";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatSelectModule } from "@angular/material/select";
+import { MatFormFieldModule } from "@angular/material/form-field";
 
-import { RouterOutlet } from "@angular/router";
-
+// Components
+import { AddUsersComponent } from "./components/add-users/add-users.component";
 import { LoginComponent } from "./components/login/login.component";
 import { HomeComponent } from "./components/home/home.component";
 import { ListUsersComponent } from "./components/list-users/list-users.component";
+import { AppComponent } from "./app.component";
+
+// Redux
+import { StoreModule } from "@ngrx/store";
+import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
+import { reducers } from "../states/reducer";
 
 @NgModule({
 	declarations: [AppComponent, AddUsersComponent, LoginComponent, HomeComponent, ListUsersComponent],
@@ -38,6 +44,8 @@ import { ListUsersComponent } from "./components/list-users/list-users.component
 		StoreModule.forRoot(reducers),
 		MatDividerModule,
 		FormsModule,
+		MatSnackBarModule,
+		MatSelectModule,
 	],
 	providers: [provideAnimationsAsync()],
 	bootstrap: [AppComponent],

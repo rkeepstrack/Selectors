@@ -1,7 +1,10 @@
+// Angular
 import { Component } from "@angular/core";
+
+// Redux
 import { Store } from "@ngrx/store";
 import { AppState, User } from "../../../states/states";
-import { selectUsersArray, wholeStateSelector } from "../../../states/selectors";
+import { selectUsersArray } from "../../../states/selectors";
 
 @Component({
 	selector: "app-list-users",

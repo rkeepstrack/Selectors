@@ -1,12 +1,14 @@
+// Angular
 import { Component } from "@angular/core";
-import { Store } from "@ngrx/store";
-import { LoginActions } from "../../../states/actions";
-import { Observable } from "rxjs";
-import { AppState, MinimalUser, UserState } from "../../../states/states";
-import { errorSelector, isLoggedInSelector, selectError, userSelector } from "../../../states/selectors";
-import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { map } from "rxjs";
+import { Router } from "@angular/router";
+
+// Redux
+import { Observable } from "rxjs";
+import { Store } from "@ngrx/store";
+import { errorSelector, isLoggedInSelector, selectError, userSelector } from "../../../states/selectors";
+import { AppState, MinimalUser, UserState } from "../../../states/states";
+import { LoginActions } from "../../../states/actions";
 
 @Component({
 	selector: "app-login",
@@ -28,8 +30,7 @@ export class LoginComponent {
 		this.userState$ = store.select(userSelector);
 		this.isLoggedIn$ = store.select(isLoggedInSelector);
 		this.hasError$ = null;
-		store.select(errorSelector).subscribe((error) => {
-			console.log(error, "errorsubscribe");
+		store.select(selectError).subscribe((error) => {
 			this.hasError$ = error;
 		});
 
@@ -46,7 +47,7 @@ export class LoginComponent {
 
 		this.store.select(errorSelector).subscribe((error) => {
 			// Extrahiere den Fehlerstring aus dem Objekt
-			if (error === null) {
+			if (error || !error) {
 				console.log("Fehler:", error);
 				this.router.navigate(["/home"]);
 			} else {
