@@ -16,7 +16,7 @@ import { map } from "rxjs";
 export class LoginComponent {
 	userState$: Observable<UserState>;
 	isLoggedIn$: Observable<boolean>;
-	hasError$: Observable<string | null>;
+	hasError$: string | null;
 
 	loginForm: FormGroup;
 
@@ -27,8 +27,11 @@ export class LoginComponent {
 	) {
 		this.userState$ = store.select(userSelector);
 		this.isLoggedIn$ = store.select(isLoggedInSelector);
-		this.hasError$ = store.select(selectError).pipe(map((error) => error));
-		console.log(this.hasError$);
+		this.hasError$ = null;
+		store.select(errorSelector).subscribe((error) => {
+			console.log(error, "errorsubscribe");
+			this.hasError$ = error;
+		});
 
 		this.router = router;
 		this.loginForm = this.fb.group({
@@ -43,23 +46,14 @@ export class LoginComponent {
 
 		this.store.select(errorSelector).subscribe((error) => {
 			// Extrahiere den Fehlerstring aus dem Objekt
-			if (error) {
-				// Es liegt ein Fehler vor, handle ihn entsprechend
+			if (error === null) {
 				console.log("Fehler:", error);
 				this.router.navigate(["/home"]);
 			} else {
-				// Es liegt kein Fehler vor, fahre mit der Anmeldung fort
-				console.log("Kein Fehler, Anmeldung erfolgreich.", error);
+				console.log("Fehler", error);
 				// Führe hier deine Anmeldeaktion aus
 			}
 		});
-
-		// if (this.hasError$.pipe(map((error) => error)) === null) {
-		// 	console.log(this.hasError$, "es gibt keinen fehler");
-		// 	this.router.navigate(["/home"]);
-		// } else {
-		// 	console.log(this.hasError$.pipe(map((error) => error)), "es gibt einen fehler");
-		// }
 	}
 
 	logout() {

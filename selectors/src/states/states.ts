@@ -19,11 +19,15 @@ export interface MinimalUser {
 export type UserRole = "admin" | "user" | "guest";
 
 export interface AppState {
-	user: UserState;
+	isLoggedIn: boolean;
+	role: UserRole;
+	error: string | null;
 	users: User[];
 }
 
 export const initialState: AppState = {
-	user: { isLoggedIn: false, role: "guest", error: null },
+	isLoggedIn: false,
+	role: "guest",
+	error: null,
 	users: [{ username: "bypass", password: "bypassword", role: "admin", id: "1712006384889" }],
 };

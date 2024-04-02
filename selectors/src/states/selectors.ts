@@ -1,7 +1,7 @@
 import { createSelector, createFeatureSelector } from "@ngrx/store";
 import { UserState, AppState } from "./states";
 
-export const selectUser = (state: AppState) => state.user;
+export const selectUser = (state: AppState) => state;
 export const userSelector = createSelector(selectUser, (state: UserState) => state);
 
 export const userKey = "users";
@@ -11,9 +11,9 @@ export const selectUsersArray = createSelector(selectUsers, (state: AppState) =>
 export const allUsersSelector = createSelector(selectUsers, (state: AppState) => state.users);
 
 export const selectError = (state: AppState) => {
-	console.log("UserState:", state.user); // Überprüfe den UserState
-	console.log("Error:", state.user.error); // Überprüfe den Fehlerwert im UserState
-	return state.user.error;
+	console.log("UserState:", state); // Überprüfe den UserState
+	console.log("Error:", state.error); // Überprüfe den Fehlerwert im UserState
+	return state.error;
 };
 
 export const errorSelector = createSelector(selectUser, (state: UserState) => state.error);

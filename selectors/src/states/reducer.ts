@@ -1,6 +1,6 @@
 import { LoginActions, AdminActions } from "./actions";
 import { ActionReducerMap, createReducer, on } from "@ngrx/store";
-import { AppState, initialState, MinimalUser, User, UserState } from "./states";
+import { AppState, initialState, MinimalUser, User } from "./states";
 
 export const loginReducer = createReducer(
 	initialState,
@@ -13,7 +13,6 @@ export const loginReducer = createReducer(
 			console.log("else");
 			return {
 				...state,
-				user: { ...state.user, error: "Benutzer wurde nicht gefunden. Bitte überprüfe deine Eingaben." },
 				error: "diggerfehler",
 			};
 		}
