@@ -1,6 +1,26 @@
-# Selectors
+# Benutzerverwaltung
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+Dieses Projekt wurde mit [Angular CLI](https://github.com/angular/angular-cli) 17.3.2. generiert - es ist jedoch keine Standalone-Anwendung, da ich kaum Ressourcen ohne eine App.Modules.ts gefunden habe.
+
+Für die Erstellung des Projekts wurden wie in den Anforderungen beschrieben folgende Technologien benutzt:
+
+-   Angular
+-   Angular Material
+-   Tailwind CSS
+
+Mit Reactive Forms wurde eine Pseudo-Frontendvalidierung auf Zeichenlänge hinzugefügt. Passende Fehlermeldungen/Successmeldungen sind implementiert.
+
+# Problematiken
+
+Mit NGRX gab es durchgängig Probleme. In meiner Vergangenheit habe mit Redux und React gearbeitet, das Konzept von Statemanagement ist mir daher bewusst.
+
+Allerdings ist es sehr schwierig Informationen zu NGRX zu finden, die eindeutig sind. Auf der offiziellen [Dokumentation](https://ngrx.io/guide/store) gibt es einige Widersprüche, andere Ressourcen zu zum Beispiel Feature Selectors sind im Grunde nicht zu finden.
+
+Vermutlich sind hier nur einzelne Handgriffe nötig, damit es zum Laufen gebracht wird, Stand jetzt funktionieren die Zustände jedoch einfach nicht - trotzdem hab ich mich entschieden, den jetzigen Stand einzureichen, und zwar aus folgendem Grund:
+
+Dieses Projekt hier ist eine Abbildung von unter einer Woche Erfahrung mit Angular, Material, Tailwind und NGRX, das während der Osterfeiertage im Jahr 2024 entstanden ist. Mit ein paar Tagen und etwas mehr Erfahrung wäre diese Übung möglich gewesen. Gleichzeitig bin ich sehr gespannt auf das Team und darauf, wie das Projekt besser hätte umgesetzt werden können.
+
+# Befehle
 
 ## Development server
 
@@ -13,10 +33,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
