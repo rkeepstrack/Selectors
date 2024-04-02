@@ -2,26 +2,28 @@
     <div class="justify-center flex my-10">
         <div class="text-3xl">Login</div>
     </div>
-        <div class="flex flex-col justify-center items-center w-full">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col w-2/3 mx-3">
-                <!-- DEBUG -->
+    <div class="flex flex-col justify-center items-center w-full">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col w-2/3 mx-3">
+            <!-- DEBUG -->
 
-                <mat-form-field class="my-3">
-                    <mat-label>Dein Username</mat-label>
-                    <input matInput formControlName="username" required>
+            <mat-form-field class="my-3">
+                <mat-label>Dein Username</mat-label>
+                <input matInput formControlName="username" required>
 
-                    <mat-error *ngIf="username && username.invalid && username.touched">Bitte gib deinen Usernamen ein (länger als 3 Zeichen)</mat-error>
-                </mat-form-field>
+                <mat-error *ngIf="username && username.invalid && username.touched">Bitte gib deinen Usernamen ein (länger als 3 Zeichen)</mat-error>
+            </mat-form-field>
 
 
-                <mat-form-field class="my-3">
-                    <mat-label>Dein Passwort</mat-label>
-                    <input matInput placeholder="password" formControlName="password" required>
-                    <mat-error *ngIf="password && password.invalid && password.touched">Dein Passwort hat auf jeden Fall
-                        mehr als 3 Zeichen.</mat-error>
-                </mat-form-field>
-                <button mat-raised-button color="primary" [disabled]="loginForm.invalid">LOGIN</button>
-            </form>
-        </div>
+            <mat-form-field class="my-3">
+                <mat-label>Dein Passwort</mat-label>
+                <input matInput placeholder="password" formControlName="password" required>
+                <mat-error *ngIf="password && password.invalid && password.touched">Dein Passwort hat auf jeden Fall
+                    mehr als 3 Zeichen.</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="loginForm.invalid">LOGIN</button>
+        </form>
+    </div>
+
+	<!-- {{hasError$ | async | json}} -->
 
 </main>

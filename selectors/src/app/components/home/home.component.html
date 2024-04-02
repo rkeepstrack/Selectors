@@ -1,11 +1,42 @@
-<main class="w-full relative">
+<main class="wrapper">
     <div class="justify-center flex my-10">
         <div class="text-3xl">WILLKOMMEN ZUHAUSE!</div>
     </div>
-    <div class="main-screen w-screen flex items-center justify-center">
-        <button mat-raised-button color="primary" [routerLink]="['/add-users']" class="mx-4">Nutzer hinzufügen</button>
-        <button mat-raised-button color="accent" [routerLink]="['/user-list']" class="mx-4">Alle Nutzer ansehen</button>
-        <button mat-raised-button (click)="logout()" [routerLink]="['/']" class="mx-4">Abmelden</button>
-    </div>
+	<div class="card-row flex items-center space-x-10 my-3">
+		<mat-card *ngIf="isAdmin" [routerLink]="['/add-users']" class="card hover:bg-cyan-500 hover:ease-in-out duration-75 cursor-pointer">
+			<mat-card-header>
+				<mat-card-title>User Hinzufügen</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<p>
+					Admins können in dieser Schaltfläche alle bisher angemeldeten Nutzer verwalten, neue Nutzer hinzufügen und bereits angelegte Nutzer löschen.
+				</p>
+			</mat-card-content>
+			<mat-card-footer class="bg-cyan-500 h-3 mt-5"></mat-card-footer>
+		</mat-card>
+		<mat-card [routerLink]="['/list-users']" class="card w-1/2 hover:bg-emerald-500 hover:ease-in-out duration-75 cursor-pointer">
+			<mat-card-header>
+				<mat-card-title>Alle Nutzer ansehen</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<p>
+					Alle bisher erstellten Nutzer einsehen.	
+				</p>
+			</mat-card-content>
+			<mat-card-footer class="bg-emerald-500 h-3 mt-5"></mat-card-footer>
+		</mat-card>
+		<mat-card [routerLink]="['/']" class="card w-1/2 hover:bg-stone-300 hover:ease-in-out duration-75 cursor-pointer">
+			<mat-card-header>
+				<mat-card-title>Abmelden</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<p>
+				Abmelden
+				</p>
+			</mat-card-content>
+			<mat-card-footer class="bg-stone-300 h-3 mt-5"></mat-card-footer>
+		</mat-card>
+	</div>
 
+	{{isLoggedIn$}}
 </main>

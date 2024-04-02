@@ -1,0 +1,27 @@
+<main class="wrapper">
+    <div class="justify-center flex my-10">
+        <div class="text-3xl">Benutzerverwaltung</div>
+    </div>
+    <div class="my-20">
+		<table class="w-full">
+			<tr class="text-left ">
+				<th>Name</th>
+				<th>Rolle</th>
+				<th>ID</th>
+			</tr>
+			<tr *ngFor="let user of users" class="text-left">
+				<td>{{user.username}}</td>
+				<td>{{user.role}}</td>
+				<td>{{user.id}}</td>
+			</tr>
+		</table>
+        <!-- <div *ngFor="let user of users" class="text-center">
+			{{user.username}} {{user.role}} {{user.id}}
+			<mat-divider></mat-divider>
+		</div> -->
+	</div>
+	<div class="button-row flex items-center justify-center">
+        <button mat-raised-button color="primary" [routerLink]="['/home']" class="mx-4">Home</button>
+        <button mat-raised-button [routerLink]="['/']" class="mx-4">Abmelden</button>
+    </div>
+</main>
