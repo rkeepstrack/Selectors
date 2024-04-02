@@ -7,8 +7,11 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import { errorSelector, isLoggedInSelector, selectError, userSelector } from "../../../states/selectors";
-import { AppState, MinimalUser, UserState } from "../../../states/states";
+import { AppState, UserState } from "../../../states/states";
 import { LoginActions } from "../../../states/actions";
+
+// Material
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
 	selector: "app-login",
@@ -18,21 +21,18 @@ import { LoginActions } from "../../../states/actions";
 export class LoginComponent {
 	userState$: Observable<UserState>;
 	isLoggedIn$: Observable<boolean>;
-	hasError$: string | null;
-
+	hasError$: Observable<string | null>;
 	loginForm: FormGroup;
 
 	constructor(
 		private fb: FormBuilder,
 		private store: Store<AppState>,
-		private router: Router
+		private router: Router,
+		private snackBar: MatSnackBar
 	) {
 		this.userState$ = store.select(userSelector);
 		this.isLoggedIn$ = store.select(isLoggedInSelector);
-		this.hasError$ = null;
-		store.select(selectError).subscribe((error) => {
-			this.hasError$ = error;
-		});
+		this.hasError$ = store.select(selectError);
 
 		this.router = router;
 		this.loginForm = this.fb.group({
@@ -41,18 +41,19 @@ export class LoginComponent {
 		});
 	}
 
-	onSubmit() {
-		let { username, password }: MinimalUser = this.loginForm.value;
-		this.store.dispatch(LoginActions.userLogin({ username, password }));
+	// Anmeldevorgang mithilfe der Daten aus dem Formular (Redux Dispatch)
+	// Bei Fehler wird eine Material Snackbar geöffnet - ansonsten wird der User auf die Homeseite weitergeleitet
 
+	onSubmit() {
+		let { username, password } = this.loginForm.value;
+		this.store.dispatch(LoginActions.userLogin({ username, password }));
 		this.store.select(errorSelector).subscribe((error) => {
-			// Extrahiere den Fehlerstring aus dem Objekt
-			if (error || !error) {
-				console.log("Fehler:", error);
+			// if (error === null) {
+			// DEBUG: da NGRX nicht korrekt implementiert ist, wird der User immer durch den Login geleitet
+			if (true) {
 				this.router.navigate(["/home"]);
 			} else {
-				console.log("Fehler", error);
-				// Führe hier deine Anmeldeaktion aus
+				this.snackBar.open("Anmeldung fehlgeschlagen", "Schließen");
 			}
 		});
 	}

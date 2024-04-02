@@ -1,4 +1,5 @@
-import { createAction, createActionGroup, props } from "@ngrx/store";
+// Redux
+import { createActionGroup, props } from "@ngrx/store";
 import { User } from "./states";
 
 export const LoginActions = createActionGroup({
@@ -16,9 +17,3 @@ export const AdminActions = createActionGroup({
 		removeUser: props<{ id: string }>(),
 	},
 });
-
-// // Login action
-// export const Login = createAction('[LOGIN] User Logged In', props<{isLoggedIn: boolean}>());
-
-// // Logout action
-// export const Logout = createAction('[LOGIN] User Logged Out', props<{isLoggedIn: boolean}>());

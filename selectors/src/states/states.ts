@@ -11,11 +11,6 @@ export interface User {
 	id: string;
 }
 
-export interface MinimalUser {
-	username: string;
-	password: string;
-}
-
 export type UserRole = "admin" | "user" | "guest";
 
 export interface AppState {

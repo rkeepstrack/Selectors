@@ -4,7 +4,8 @@ import { Component } from "@angular/core";
 // Redux
 import { Store } from "@ngrx/store";
 import { AppState, User } from "../../../states/states";
-import { selectUsersArray } from "../../../states/selectors";
+import { allUsersSelector } from "../../../states/selectors";
+import { Observable } from "rxjs";
 
 @Component({
 	selector: "app-list-users",
@@ -12,14 +13,9 @@ import { selectUsersArray } from "../../../states/selectors";
 	styleUrl: "./list-users.component.css",
 })
 export class ListUsersComponent {
-	users: User[] | [];
+	users: Observable<User[]>;
 
 	constructor(private store: Store<AppState>) {
-		this.users = [];
-		store.select(selectUsersArray).subscribe((users) => {
-			console.log(users);
-			this.users = users;
-			return users;
-		});
+		this.users = store.select(allUsersSelector);
 	}
 }

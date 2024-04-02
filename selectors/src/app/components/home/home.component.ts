@@ -25,7 +25,6 @@ export class HomeComponent {
 	) {
 		this.isLoggedIn$ = null;
 		store.select(isLoggedInSelector).subscribe((isLoggedIn) => {
-			console.log(isLoggedIn, "isLoggedIn");
 			this.isLoggedIn$ = isLoggedIn;
 			return isLoggedIn;
 		});

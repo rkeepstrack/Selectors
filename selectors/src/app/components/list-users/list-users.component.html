@@ -9,7 +9,7 @@
 				<th>Rolle</th>
 				<th>ID</th>
 			</tr>
-			<tr *ngFor="let user of users" class="text-left">
+			<tr *ngFor="let user of users | async" class="text-left">
 				<td>{{user.username}}</td>
 				<td>{{user.role}}</td>
 				<td>{{user.id}}</td>
